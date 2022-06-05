@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
@@ -6,13 +6,18 @@ import MainHeader from './components/MainHeader/MainHeader';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
-  // check is user is logged in.
-  const storedUserLoggedInInformation = localStorage.getItem('isLoggedIn');
 
-  if (storedUserLoggedInInformation === '1') {
-    setIsLoggedIn(true);
-  }
+  
+  // setup a use effect function to check is user is logged in
+  useEffect(() => {
+    // check is user is logged in.
+    const storedUserLoggedInInformation = localStorage.getItem('isLoggedIn');
+  
+    if (storedUserLoggedInInformation === '1') {
+      setIsLoggedIn(true);
+    }
+
+  }, []);
 
 
   const loginHandler = (email, password) => {
