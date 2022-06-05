@@ -7,16 +7,17 @@ import MainHeader from './components/MainHeader/MainHeader';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  
+
   // setup a use effect function to check is user is logged in
   useEffect(() => {
     // check is user is logged in.
     const storedUserLoggedInInformation = localStorage.getItem('isLoggedIn');
-  
+
+    // running from with useEffect prevents infinite loop
     if (storedUserLoggedInInformation === '1') {
       setIsLoggedIn(true);
     }
-
+    // empty array, so no changes are recorded, to prompt re-running useEffects
   }, []);
 
 
@@ -30,6 +31,8 @@ function App() {
   };
 
   const logoutHandler = () => {
+    // removed isLoggedIn key on logout
+    localStorage.removeItem('isLoggedIn');
     setIsLoggedIn(false);
   };
 
