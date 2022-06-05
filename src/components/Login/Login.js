@@ -11,7 +11,10 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  useEffect();
+  // build useEffect fn boiler with array of dependencies
+  useEffect(() => {
+
+  }, []);
 
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
