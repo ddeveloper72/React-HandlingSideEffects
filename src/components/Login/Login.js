@@ -20,7 +20,11 @@ const Login = (props) => {
         enteredEmail.includes('@') && enteredPassword.trim().length > 6
       );
 
-    }, 500)
+    }, 500);
+    // add anonymous cleanup function
+    return () => {
+      console.log('Cleanup...');
+    };
     // add the specific dependencies for the side-effect function
   }, [enteredEmail, enteredPassword]);
 
