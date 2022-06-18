@@ -13,9 +13,14 @@ const Login = (props) => {
 
   // build useEffect fn boiler with array of dependencies
   useEffect(() => {
-    setFormIsValid(
-      enteredEmail.includes('@') && enteredPassword.trim().length > 6
-    );
+    // setup debounce to wait for user to complete data input
+    setTimeout(() => {
+      console.log('Checking form validity...');
+      setFormIsValid(
+        enteredEmail.includes('@') && enteredPassword.trim().length > 6
+      );
+
+    }, 500)
     // add the specific dependencies for the side-effect function
   }, [enteredEmail, enteredPassword]);
 
