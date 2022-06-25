@@ -14,7 +14,13 @@ const Login = (props) => {
   // test to see when useEffect runs
   useEffect(() => {
     console.log('Effect Running...');
-  })
+
+    // define when we want to apply useEffect..
+    return () => {
+      console.log('Effect Cleanup...');
+    };    
+    // ...by defining a dependency or not
+  }, []);
 
   // build useEffect fn boiler with array of dependencies
   useEffect(() => {
