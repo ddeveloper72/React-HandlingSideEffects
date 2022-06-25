@@ -11,6 +11,11 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
+  // test to see when useEffect runs
+  useEffect(() => {
+    console.log('Effect Running...');
+  })
+
   // build useEffect fn boiler with array of dependencies
   useEffect(() => {
     // setup debounce to wait for user to complete data input
