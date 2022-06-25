@@ -14,7 +14,7 @@ const Login = (props) => {
   // build useEffect fn boiler with array of dependencies
   useEffect(() => {
     // setup debounce to wait for user to complete data input
-    setTimeout(() => {
+    const identifier = setTimeout(() => {
       console.log('Checking form validity...');
       setFormIsValid(
         enteredEmail.includes('@') && enteredPassword.trim().length > 6
@@ -24,6 +24,8 @@ const Login = (props) => {
     // add anonymous cleanup function
     return () => {
       console.log('Cleanup...');
+      // clear last timer before starting a new one
+      clearTimeout(identifier);
     };
     // add the specific dependencies for the side-effect function
   }, [enteredEmail, enteredPassword]);
